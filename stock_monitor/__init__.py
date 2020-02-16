@@ -41,4 +41,4 @@ class AlphaVantageClient:
         except requests.ConnectionError as e:
             raise requests.ConnectionError('You may not have internet connection', e, sep='\n')
 
-        return self._limit_results(data['Time Series (Daily)'], 7)
+        return self._limit_results(data['Time Series (Daily)'], since_n_day_ago)
