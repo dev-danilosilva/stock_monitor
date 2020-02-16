@@ -16,10 +16,10 @@ class AlphaVantageClient:
         self.api_key = key
         self._alpha_vantage_api = ApiFetcher(base_url=base_url, key=key)
 
-    def _limit_results(self, time_series: TimeSeriesDaily, past_limit_days: int) -> TimeSeriesDaily:
+    def _limit_results(self, time_series: TimeSeriesDaily, period: int) -> TimeSeriesDaily:
         limited_result: TimeSeriesDaily = {}
 
-        last_LIMIT_days = get_last_n_days(past_limit_days)
+        last_LIMIT_days = get_last_n_days(period)
 
         for day in last_LIMIT_days:
             str_day: str = str(day)
@@ -28,17 +28,17 @@ class AlphaVantageClient:
 
         return limited_result
 
-    def get_time_series_daily(self, ticker: str, since_n_day_ago: int = 7) -> TimeSeriesDaily:
+    def get_time_series_daily(self, ticker: str, period: int = 7) -> TimeSeriesDaily:
         try:
             data: Dict = self._alpha_vantage_api.get_json(
                 uri='/query',
                 function='TIME_SERIES_DAILY',
                 symbol=ticker,
                 datatype='json',
-                outputsize='compact' if since_n_day_ago <= 100 else 'full',
+                outputsize='compact' if period <= 100 else 'full',
                 apikey=self.api_key
             )
         except requests.ConnectionError as e:
             raise requests.ConnectionError('You may not have internet connection', e, sep='\n')
 
-        return self._limit_results(data['Time Series (Daily)'], since_n_day_ago)
+        return self._limit_results(data['Time Series (Daily)'], period)

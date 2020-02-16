@@ -23,7 +23,6 @@ class ApiFetcher:
     def get_json(self, uri: str, **kwargs) -> Dict['str', Union[str, float]]:
         full_url = self._build_url(kwargs, uri=uri)
         resp = requests.get(full_url)
-        print(resp.status_code)
         if resp.status_code != 200:
             raise HTTPError('Error', resp.status_code, sep=':')
         return resp.json()
