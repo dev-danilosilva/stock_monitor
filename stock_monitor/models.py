@@ -3,25 +3,26 @@ from datetime import datetime
 from pony.orm import *
 import os
 
-db = Database()
+database = Database()
 
 
-class StockSymbol(db.Entity):
+class StockSymbol(database.Entity):
     id = PrimaryKey(int, auto=True)
     ticker = Required(str, unique=True)
     stock__prices = Set('StockPrices')
 
 
-class StockPrices(db.Entity):
+class StockPrices(database.Entity):
     id = PrimaryKey(int, auto=True)
     last_update = Required(datetime)
     close_price = Required(float)
-    date = Required(date, unique=True)
+    date = Required(date)
     fk_stock_id = Required(StockSymbol)
 
 
-db.bind(provider='sqlite', filename='stock_monitor.db', create_db=True)
-db.generate_mapping(create_tables=True)
+filename = os.path.join(os.getcwd(), 'stock_monitor.db')
+database.bind(provider='sqlite', filename=filename, create_db=True)
+database.generate_mapping(create_tables=True)
 
 # class Storage:
 #     def __init__(self, filename='database.sqlite'):
