@@ -23,7 +23,7 @@ Para utilizar o módulo, basta instanciar um objeto da classe AlphaVantageClient
 get_time_series_daily para obter um dicionário com dados diários de uma determinada ação.
 
 
-### `stock_monitor.AlphaVantageClient.get_time_series_daily(ticker: str)`
+### `stock_monitor.AlphaVantageClient.get_time_series_daily(ticker: str, period: int)`
 
 O método recebe como 2 informações como parâmetro
 
