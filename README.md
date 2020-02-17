@@ -40,7 +40,7 @@ banco de dados utilizando o Pony ORM.
 ### `stock_monitor.models.connect_to_database(database_path : str)`
 O método que cria e conecta-se à base de dados
 
-##`main.py`
+## `main.py`
 
 O script:
 
