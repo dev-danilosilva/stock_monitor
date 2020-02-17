@@ -32,7 +32,7 @@ O método recebe como 2 informações como parâmetro
 o valor passado no parâmetro period. (O valor padrão desse parâmetro é 7).
 
 
-## `stock_monitor.models`
+### `stock_monitor.models`
 
 Módulo que cria o banco de dados e contém as classes modelo para o mapeamento das entidades do
 banco de dados utilizando o Pony ORM.
