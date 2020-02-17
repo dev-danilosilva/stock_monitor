@@ -113,7 +113,7 @@ class StockPrices(db.Entity):
 ```
 
 
-*Obs: As anotações de tipo de dados no módulo stock_monitor foi utilizado no desenvolvimento para
+*Obs: As anotações de tipo de dados no módulo stock_monitor foram utilizadas no desenvolvimento para
 garantir que alguns tipos de erros fossem evitados em produção utilizando-se o type checker `mypy`*
 
 
