@@ -15,7 +15,7 @@ DATABASE_FILE_PATH = 'database.db'
 API_KEY = ''
 
 
-# Caso uma determinada ação não exista no BD, um registro no banco de dados é criado. Caso já existe, o registro é
+# Caso uma determinada ação não exista no BD, um registro no banco de dados é criado. Caso já exista, o registro é
 # obtido do BD.
 def get_or_create_ticker(symbol):
     ticker = StockSymbol.get(ticker=symbol)
